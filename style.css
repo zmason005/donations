@@ -1,3 +1,12 @@
+/* 1. ROOT RESET - This kills the white frame in Chrome */
+html {
+    background-color: #000000; /* Ensures the browser 'canvas' is black */
+    margin: 0;
+    padding: 0;
+    /* Prevents white flashing during overscroll on mobile/Mac */
+    overscroll-behavior: none; 
+}
+
 /* THEME: High-Contrast Braille-First
    Colors: Black (#000), Gold (#FFD700), White (#FFF) */
 
@@ -8,6 +17,8 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
+    /* Ensures the body stretches to the full height of the window */
+    min-height: 100vh; 
 }
 
 /* NAVIGATION */
@@ -15,6 +26,9 @@ body {
     background: #111;
     border-bottom: 2px solid #FFD700;
     padding: 1rem;
+    /* Ensures the nav spans the full width even if content is centered below */
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .main-nav ul {
@@ -23,6 +37,9 @@ body {
     margin: 0;
     display: flex;
     gap: 20px;
+    /* Centers the nav items if you want them aligned with the 800px content */
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .main-nav a {
@@ -37,10 +54,13 @@ body {
 }
 
 /* LAYOUT */
+/* We keep the max-width here so the text is readable, 
+   but the background remains black because the body/html handle it. */
 header, main, footer {
     max-width: 800px;
     margin: 0 auto;
     padding: 2rem;
+    box-sizing: border-box;
 }
 
 h1, h2, h3 {
@@ -85,6 +105,7 @@ input, textarea {
     border: 1px solid #FFD700;
     color: white;
     border-radius: 4px;
+    box-sizing: border-box; /* Prevents inputs from overflowing their container */
 }
 
 .btn-submit {
@@ -111,4 +132,3 @@ input, textarea {
 .skip-link:focus {
     top: 0;
 }
-
