@@ -6,16 +6,17 @@
     <title>Support Braille-First Software</title>
     <link rel="stylesheet" href="https://braillefirst.com/style.css">
     <style>
-        /* Essential accessibility styles */
+        /* Focus and Error Styling */
         *:focus-visible {
             outline: 4px solid #66FCF1 !important;
             outline-offset: 2px !important;
         }
         .error-text {
-            color: #ff6b6b;
-            font-size: 0.9em;
-            margin-top: 5px;
             display: block;
+            color: #ff6b6b;
+            font-size: 0.85em;
+            margin-top: 5px;
+            min-height: 1.2em;
         }
         .skip-link {
             position: absolute;
@@ -58,12 +59,11 @@
 
         <section class="card donation-secondary" aria-labelledby="monthly-donate">
             <h2 id="monthly-donate">Monthly Sponsorship</h2>
-            <p>For those who want to support long-term maintenance.</p>
-            <!-- CLEAN LINK BELOW - NO OUTLOOK SAFELINKS -->
+            <p>For those who want to support long-term maintenance and receive GitHub badges.</p>
+            <!-- Cleaned GitHub Link -->
             <a href="https://github.com/sponsors/YOUR_GITHUB_HANDLE" class="btn-github">Sponsor on GitHub</a>
         </section>
 
-        <!-- CHANGED FROM DIV TO SECTION FOR LANDMARK COMPLIANCE -->
         <section class="custom-content card" aria-labelledby="goals-title">
             <h3 id="goals-title">Current Project Goals</h3>
             <p>The Braille First Initiative explores how Braille can function as a language for building technology.</p>
@@ -71,16 +71,19 @@
 
         <section class="card feedback-section" aria-labelledby="feedback-title">
             <h2 id="feedback-title">Contact Us</h2>
-            <form action="https://formspree.io/f/mdayjajr" method="POST">
-                <label for="user-email">Email (Optional):</label>
-                <!-- ADDED ARIA-DESCRIBEDBY FOR ERROR HANDLING -->
-                <input 
-                    type="email" 
-                    id="user-email" 
-                    name="email" 
-                    placeholder="email@example.com"
-                    aria-describedby="email-error">
-                <span id="email-error" class="error-text" role="alert"></span>
+            <form action="https://formspree.io/f/mdayjajr" method="POST" novalidate>
+                <div class="field-container">
+                    <label for="user-email">Email (Optional):</label>
+                    <input 
+                        type="email" 
+                        id="user-email" 
+                        name="email" 
+                        placeholder="email@example.com"
+                        autocomplete="email"
+                        aria-describedby="email-error"
+                        aria-invalid="false">
+                    <span id="email-error" class="error-text" role="alert" aria-live="polite"></span>
+                </div>
 
                 <label for="message">Your Message:</label>
                 <textarea id="message" name="message" rows="5" required></textarea>
@@ -96,14 +99,23 @@
     </footer>
 
     <script>
-        // Simple error feedback to satisfy WCAG 3.3.3
-        const email = document.getElementById('user-email');
-        const error = document.getElementById('email-error');
-        email.addEventListener('blur', () => {
-            if (email.value && !email.validity.valid) {
-                error.textContent = "Please enter a valid email address.";
+        const emailInput = document.getElementById('user-email');
+        const errorDisplay = document.getElementById('email-error');
+
+        emailInput.addEventListener('blur', function() {
+            if (this.value === "" || this.checkValidity()) {
+                this.setAttribute('aria-invalid', 'false');
+                errorDisplay.textContent = "";
             } else {
-                error.textContent = "";
+                this.setAttribute('aria-invalid', 'true');
+                errorDisplay.textContent = "Please include an '@' and a valid domain (e.g., name@example.com).";
+            }
+        });
+
+        emailInput.addEventListener('input', function() {
+            if (this.checkValidity()) {
+                this.setAttribute('aria-invalid', 'false');
+                errorDisplay.textContent = "";
             }
         });
     </script>
