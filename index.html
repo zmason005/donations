@@ -6,12 +6,13 @@
     <title>Support Braille-First Software</title>
     <link rel="stylesheet" href="https://braillefirst.com/style.css">
     <style>
-        /* Essential Accessibility Overrides */
+        /* High-Visibility Focus States */
         *:focus-visible {
             outline: 4px solid #66FCF1 !important;
             outline-offset: 2px !important;
         }
 
+        /* Standard Screen Reader Utility Class */
         .sr-only {
             position: absolute;
             width: 1px;
@@ -82,7 +83,6 @@
             </a>
         </section>
 
-        <!-- Fixed Section Landmark -->
         <section class="custom-content card" aria-labelledby="goals-title">
             <h3 id="goals-title">Current Project Goals</h3>
             <p>The Braille First Initiative explores how Braille can function as a language for building technology—developing tools that use tactile literacy to solve real-world problems, not just access them.</p>
@@ -116,12 +116,15 @@
 
     </main>
 
-    <footer>
+    <footer role="contentinfo">
         <p>© 2026 Braille-First Initiative. Built for the tactile web.</p>
     </footer>
 
     <script>
-        // Email Error Suggestion Logic (WCAG 3.3.3)
+        /**
+         * WCAG 3.3.3 - Error Suggestion Logic
+         * Provides specific formatting hints to assistive technology when input is invalid.
+         */
         const emailInput = document.getElementById('user-email');
         const emailHint = document.getElementById('email-hint');
 
