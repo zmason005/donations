@@ -4,16 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Support Braille-First Software</title>
-    <link rel="stylesheet" href="style.css"> </head> <body>
+    <link rel="stylesheet" href="https://braillefirst.com/style.css">
+    <style>
+        /* Essential Accessibility Overrides */
+        *:focus-visible {
+            outline: 4px solid #66FCF1 !important;
+            outline-offset: 2px !important;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .error-text {
+            color: #ff6b6b;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: block;
+            min-height: 1.2em;
+        }
+
+        /* Basic skip-link styling */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #66FCF1;
+            color: #000;
+            padding: 8px;
+            z-index: 100;
+        }
+        .skip-link:focus { top: 0; }
+    </style>
+</head>
+<body>
 
     <a class="skip-link" href="#main-content">Skip to content</a>
 
-    <nav class="main-nav" aria-label="Main Navigation">
+    <nav class="main-nav">
         <ul>
-            <li><a href="index.html" aria-current="page">Home</a></li>
-            <li><a href="#">Software and Wigits (under development)</a></li>
-            <li><a href="#">BrailleAI (under development)</a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="https://braillefirst.com/index.html" aria-current="page">Home</a></li>
+            <li><a href="#" role="button" onclick="event.preventDefault();">Software and Widgets (under development)</a></li>
+            <li><a href="#" role="button" onclick="event.preventDefault();">BrailleAI (under development)</a></li>
+            <li><a href="#" role="button" onclick="event.preventDefault();">About</a></li>
         </ul>
     </nav>
 
@@ -25,11 +66,10 @@
     </header>
 
     <main id="main-content">
-        
+       
         <section class="card donation-primary" aria-labelledby="quick-donate">
             <h2 id="quick-donate">One-Time Support</h2>
             <p>The fastest way to support current development is via Buy Me a Coffee. No account required.</p>
-            
             <a href="https://www.buymeacoffee.com/masonsinc.05" class="btn-bmac">
                 Buy Me a Coffee
             </a>
@@ -38,28 +78,38 @@
         <section class="card donation-secondary" aria-labelledby="monthly-donate">
             <h2 id="monthly-donate">Monthly Sponsorship</h2>
             <p>For those who want to support long-term maintenance and receive GitHub badges.</p>
-            
-            <a href="https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fsponsors%2FYOUR_GITHUB_HANDLE&data=05%7C02%7C%7C3d755ffdc71d450cc0fd08de9cc19051%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C639120552314596117%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=3j5SrEjf3BuUQiMdFSvJKoH9RIc0nBJHu4G7mLU4ccE%3D&reserved=0" class="btn-github">
+            <a href="https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fsponsors%2FYOUR_GITHUB_HANDLE&data=05%7C02%7C%7Cd5aa9e26aa674d4bad7208dea93cf292%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C639134276382505251%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=NORjCw1tXoLy8Mg6U89feW%2Bh34qBvR0yZT9fNDMGPNY%3D&reserved=0" class="btn-github">
                 Sponsor on GitHub
             </a>
         </section>
 
-        <div class="custom-content card">
-            <h3>Current Project Goals</h3>
-            <p>The Braille First Initiative explores how Braille can function as a language for building technology—developing tools that use tactile literacy to solve real-world problems, not just access them.</p>
-        </div>
+        <section class="custom-content card" aria-labelledby="goals-title">
+            <h3 id="goals-title">Current Project Goals</h3>
+            <p>The Braille First Initiative explores how Braille can function as a language for building technology—developing tools that use tactile literacy to solve real-world problems.</p>
+        </section>
 
         <section class="card feedback-section" aria-labelledby="feedback-title">
             <h2 id="feedback-title">Contact Us</h2>
-            <p>Your feedback shapes the future of this initiative. These suggestions are emailed directly to me.</p>
-            
-            <form action="https://formspree.io/f/mdayjajr" method="POST">
-                <label for="user-email">Email (Optional):</label>
-                <input type="email" id="user-email" name="email" placeholder="email@example.com">
+            <p>Your feedback shapes the future of this initiative.</p>
+           
+            <form action="https://formspree.io/f/mdayjajr" method="POST" id="feedback-form">
+                <div class="form-group">
+                    <label for="user-email">Email (Optional):</label>
+                    <input 
+                        type="email" 
+                        id="user-email" 
+                        name="email" 
+                        placeholder="email@example.com"
+                        aria-describedby="email-hint"
+                    >
+                    <span id="email-hint" class="error-text" role="alert"></span>
+                </div>
 
-                <label for="message">Your Message:</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-                
+                <div class="form-group">
+                    <label for="message">Your Message:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+               
                 <button type="submit" class="btn-submit">Send Suggestion</button>
             </form>
         </section>
@@ -67,8 +117,24 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 Braille-First Initiative. Built for the tactile web.</p>
+        <p>© 2026 Braille-First Initiative. Built for the tactile web.</p>
     </footer>
 
+    <script>
+        // Professional Error Suggestion Logic (WCAG 3.3.3)
+        const emailInput = document.getElementById('user-email');
+        const emailHint = document.getElementById('email-hint');
+
+        emailInput.addEventListener('blur', () => {
+            if (emailInput.value && !emailInput.validity.valid) {
+                emailHint.textContent = "Please include an '@' and a domain. Example: name@brlfirst.com";
+                emailInput.setAttribute('aria-invalid', 'true');
+            } else {
+                emailHint.textContent = "";
+                emailInput.removeAttribute('aria-invalid');
+            }
+        });
+    </script>
 </body>
 </html>
+
