@@ -32,7 +32,6 @@
             min-height: 1.2em;
         }
 
-        /* Basic skip-link styling */
         .skip-link {
             position: absolute;
             top: -40px;
@@ -83,14 +82,15 @@
             </a>
         </section>
 
+        <!-- Fixed Section Landmark -->
         <section class="custom-content card" aria-labelledby="goals-title">
             <h3 id="goals-title">Current Project Goals</h3>
-            <p>The Braille First Initiative explores how Braille can function as a language for building technology—developing tools that use tactile literacy to solve real-world problems.</p>
+            <p>The Braille First Initiative explores how Braille can function as a language for building technology—developing tools that use tactile literacy to solve real-world problems, not just access them.</p>
         </section>
 
         <section class="card feedback-section" aria-labelledby="feedback-title">
             <h2 id="feedback-title">Contact Us</h2>
-            <p>Your feedback shapes the future of this initiative.</p>
+            <p>Your feedback shapes the future of this initiative. These suggestions are emailed directly to me.</p>
            
             <form action="https://formspree.io/f/mdayjajr" method="POST" id="feedback-form">
                 <div class="form-group">
@@ -121,7 +121,7 @@
     </footer>
 
     <script>
-        // Professional Error Suggestion Logic (WCAG 3.3.3)
+        // Email Error Suggestion Logic (WCAG 3.3.3)
         const emailInput = document.getElementById('user-email');
         const emailHint = document.getElementById('email-hint');
 
