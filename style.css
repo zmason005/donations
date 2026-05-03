@@ -83,18 +83,12 @@ h1, h2, h3 {
     text-decoration: none;
     font-weight: bold;
     margin-top: 10px;
+    background-color: #FFDD00; /* Yellow */
+    color: #000;
     text-align: center;
 }
 
-.btn-bmac {
-    background-color: #FFDD00; /* Classic BMAC Yellow */
-    color: #000;
-}
 
-.btn-github {
-    background-color: #db61a2; /* GitHub Sponsor Pink */
-    color: #fff;
-}
 
 /* FORM STYLING */
 input, textarea {
