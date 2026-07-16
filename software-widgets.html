@@ -3,10 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Software Widgets</title>
+    <title>Software and Widgets - Braille-First</title>
+    <link rel="stylesheet" href="https://braillefirst.com/style.css">
+    <style>
+        /* Focus and Error Styling */
+        *:focus-visible {
+            outline: 4px solid #66FCF1 !important;
+            outline-offset: 2px !important;
+        }
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #66FCF1;
+            padding: 8px;
+            z-index: 100;
+        }
+        .skip-link:focus { top: 0; }
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        .app-card h2 a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+        .app-card h2 a:hover,
+        .app-card h2 a:focus {
+            text-decoration: underline;
+        }
+        .app-placeholder {
+            font-style: italic;
+            color: #aaa;
+        }
+    </style>
 </head>
 <body>
-    <h1>Software Widgets</h1>
-    <p>Welcome to the Software Widgets page.</p>
+
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <nav class="main-nav" aria-label="Primary">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="software-widgets.html" aria-current="page">Software and Widgets</a></li>
+            <li><a href="brailleai.html">BrailleAI (under development)</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <header role="banner">
+        <h1>Software and Widgets</h1>
+        <div class="custom-content">
+            <p>A showcase of web apps built as part of the Braille-First Initiative.</p>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+        <section class="card app-card" aria-labelledby="contractable-title">
+            <h2 id="contractable-title">
+                <a href="https://contractable.braillefirst.com">CONTRACTABLE<span class="visually-hidden"> (opens braillefirst.com subdomain)</span></a>
+            </h2>
+            <p class="app-placeholder">Description coming soon.</p>
+        </section>
+
+        <section class="card app-card" aria-labelledby="brailleeditor-title">
+            <h2 id="brailleeditor-title">
+                <a href="#">BRAILLEEditor<span class="visually-hidden"> (link coming soon)</span></a>
+            </h2>
+            <p class="app-placeholder">Description coming soon.</p>
+        </section>
+
+        <section class="card app-card" aria-labelledby="dstylus-title">
+            <h2 id="dstylus-title">
+                <a href="#">D-Stylus Braille Editor<span class="visually-hidden"> (link coming soon)</span></a>
+            </h2>
+            <p class="app-placeholder">Description coming soon.</p>
+        </section>
+
+    </main>
+
+    <footer role="contentinfo">
+        <p>© 2026 Braille-First Initiative. Built for the tactile web.</p>
+    </footer>
+
 </body>
 </html>
