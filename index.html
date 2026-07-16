@@ -35,10 +35,10 @@
 
     <nav class="main-nav" aria-label="Primary">
         <ul>
-            <li><a href="https://braillefirst.com/index.html" aria-current="page">Home</a></li>
-            <li><a href="#" role="button" onclick="event.preventDefault();">Software and Widgets (under development)</a></li>
-            <li><a href="#" role="button" onclick="event.preventDefault();">BrailleAI (under development)</a></li>
-            <li><a href="#" role="button" onclick="event.preventDefault();">About</a></li>
+            <li><a href="index.html" aria-current="page">Home</a></li>
+            <li><a href="software-widgets.html">Software and Widgets</a></li>
+            <li><a href="brailleai.html">BrailleAI (under development)</a></li>
+            <li><a href="about.html">About</a></li>
         </ul>
     </nav>
 
@@ -85,9 +85,18 @@
                     <span id="email-error" class="error-text" role="alert" aria-live="polite"></span>
                 </div>
 
-                <label for="message">Your Message:</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-               
+                <div class="field-container">
+                    <label for="message">Your Message:</label>
+                    <textarea 
+                        id="message" 
+                        name="message" 
+                        rows="5" 
+                        required
+                        aria-describedby="message-error"
+                        aria-invalid="false"></textarea>
+                    <span id="message-error" class="error-text" role="alert" aria-live="polite"></span>
+                </div>
+
                 <button type="submit" class="btn-submit">Send Suggestion</button>
             </form>
         </section>
@@ -101,6 +110,9 @@
     <script>
         const emailInput = document.getElementById('user-email');
         const errorDisplay = document.getElementById('email-error');
+        const messageInput = document.getElementById('message');
+        const messageError = document.getElementById('message-error');
+        const contactForm = document.querySelector('.feedback-section form');
 
         emailInput.addEventListener('blur', function() {
             if (this.value === "" || this.checkValidity()) {
@@ -116,6 +128,45 @@
             if (this.checkValidity()) {
                 this.setAttribute('aria-invalid', 'false');
                 errorDisplay.textContent = "";
+            }
+        });
+
+        function validateMessage() {
+            if (messageInput.checkValidity()) {
+                messageInput.setAttribute('aria-invalid', 'false');
+                messageError.textContent = "";
+                return true;
+            } else {
+                messageInput.setAttribute('aria-invalid', 'true');
+                messageError.textContent = "Please enter a message before submitting.";
+                return false;
+            }
+        }
+
+        messageInput.addEventListener('input', function() {
+            if (this.checkValidity()) {
+                this.setAttribute('aria-invalid', 'false');
+                messageError.textContent = "";
+            }
+        });
+
+        contactForm.addEventListener('submit', function(event) {
+            const messageValid = validateMessage();
+            const emailValid = emailInput.value === "" || emailInput.checkValidity();
+
+            if (!emailValid) {
+                emailInput.setAttribute('aria-invalid', 'true');
+                errorDisplay.textContent = "Please include an '@' and a valid domain (e.g., name@example.com).";
+            }
+
+            if (!messageValid || !emailValid) {
+                event.preventDefault();
+                // Move focus to the first invalid field for accessibility
+                if (!messageValid) {
+                    messageInput.focus();
+                } else {
+                    emailInput.focus();
+                }
             }
         });
     </script>
