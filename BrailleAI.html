@@ -3,10 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BrailleAI</title>
+    <title>BrailleAI - Braille-First</title>
+    <link rel="stylesheet" href="https://braillefirst.com/style.css">
+    <style>
+        *:focus-visible {
+            outline: 4px solid #66FCF1 !important;
+            outline-offset: 2px !important;
+        }
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #66FCF1;
+            padding: 8px;
+            z-index: 100;
+        }
+        .skip-link:focus { top: 0; }
+    </style>
 </head>
 <body>
-    <h1>BrailleAI</h1>
-    <p>Welcome to the BrailleAI page.</p>
+
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <nav class="main-nav" aria-label="Primary">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="software-widgets.html">Software and Widgets</a></li>
+            <li><a href="brailleai.html" aria-current="page">BrailleAI (under development)</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <header role="banner">
+        <h1>BrailleAI</h1>
+    </header>
+
+    <main id="main-content">
+        <section class="card" aria-labelledby="coming-soon-title">
+            <h2 id="coming-soon-title">Coming Soon</h2>
+            <p>This page is under development. Check back soon for details on BrailleAI.</p>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <p>© 2026 Braille-First Initiative. Built for the tactile web.</p>
+    </footer>
+
 </body>
 </html>
