@@ -5,45 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Software and Widgets - Braille-First</title>
     <link rel="stylesheet" href="https://braillefirst.com/style.css">
-    <style>
-        /* Focus and Error Styling */
-        *:focus-visible {
-            outline: 4px solid #66FCF1 !important;
-            outline-offset: 2px !important;
-        }
-        .skip-link {
-            position: absolute;
-            top: -40px;
-            left: 0;
-            background: #66FCF1;
-            padding: 8px;
-            z-index: 100;
-        }
-        .skip-link:focus { top: 0; }
-        .visually-hidden {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-        .app-card h2 a {
-            color: #FFD700;
-            text-decoration: none;
-        }
-        .app-card h2 a:hover,
-        .app-card h2 a:focus {
-            text-decoration: underline;
-        }
-        .app-placeholder {
-            font-style: italic;
-            color: #aaa;
-        }
-    </style>
 </head>
 <body>
 
@@ -69,21 +30,24 @@
 
         <section class="card app-card" aria-labelledby="contractable-title">
             <h2 id="contractable-title">
-                <a href="https://contractable.braillefirst.com">CONTRACTABLE<span class="visually-hidden"> (opens braillefirst.com subdomain)</span></a>
+                <a href="https://contractable.braillefirst.com" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   aria-label="CONTRACTABLE (Opens the CONTRACTABLE game in a new tab)">CONTRACTABLE</a>
             </h2>
-            <p class="app-placeholder">Description Every dot counts! CONTRACTABLE is the exciting daily Braille puzzle that tests your skill, logic, and intuition. Reveal clues, solve the word, and come back tomorrow for a new challenge.</p>
+            <p>Every dot counts! CONTRACTABLE is the daily Braille puzzle that tests your skill, logic, and intuition. Reveal clues, solve the word, and come back tomorrow for a new challenge.</p>
         </section>
 
         <section class="card app-card" aria-labelledby="brailleeditor-title">
             <h2 id="brailleeditor-title">
-                <a href="#">BRAILLEEditor<span class="visually-hidden"> (link coming soon)</span></a>
+                <a href="#" aria-label="BRAILLEEditor (link coming soon)">BRAILLEEditor</a>
             </h2>
             <p class="app-placeholder">Description coming soon.</p>
         </section>
 
         <section class="card app-card" aria-labelledby="dstylus-title">
             <h2 id="dstylus-title">
-                <a href="#">D-Stylus Braille Editor<span class="visually-hidden"> (link coming soon)</span></a>
+                <a href="#" aria-label="D-Stylus Braille Editor (link coming soon)">D-Stylus Braille Editor</a>
             </h2>
             <p class="app-placeholder">Description coming soon.</p>
         </section>
